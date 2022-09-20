@@ -44,15 +44,7 @@
                                 -
                             </button>
                             <div class="flex-1 flex items-center">
-                                <input
-                                    id="products_{{ $product->idproduct }}_input"
-                                    type="text"
-                                    name="amount"
-                                    value="{{ $product->amount }}"
-                                    class="flex-1 focus:outline-0 text-center"
-                                    data-stepper-target="input"
-                                    data-action="keyup->stepper#update change->stepper#submit"
-                                >
+                                @include('products._partials.product-input', ['product' => $product])
                                 <span>/</span>
                                 <span class="flex-1 text-center">{{ $product->amount_ordered }}</span>
                             </div>

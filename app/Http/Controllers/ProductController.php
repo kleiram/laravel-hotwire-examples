@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ProductUpdated;
 use App\Http\Requests\ProductUpdateRequest;
 use App\Models\Product;
+use Illuminate\Support\Facades\Event;
 use Illuminate\View\View;
 
 class ProductController extends Controller
@@ -25,6 +27,6 @@ class ProductController extends Controller
         $product->amount = $request->validated()['amount'];
         $product->save();
 
-        return redirect()->route('products.show', $product);
+        Event::dispatch(new ProductUpdated($product));
     }
 }

@@ -72,4 +72,11 @@ export default class StepperController extends Controller {
             this.valueValue = clamp(parseInt(event.params.value), this.minimumValue, this.maximumValue);
         }
     }
+
+    inputTargetConnected(target) {
+        console.log(':inputTargetConnected');
+        if (target instanceof HTMLInputElement && target.value && !isNaN(parseInt(target.value))) {
+            this.valueValue = clamp(parseInt(target.value), this.minimumValue, this.maximumValue);
+        }
+    }
 }
